@@ -1,7 +1,7 @@
-import six
-
 from copy import copy, deepcopy
 from collections import deque
+
+from . import six_subset as six
 
 try:
     from collections import OrderedDict
