@@ -1,7 +1,16 @@
 """
 This includes a subset of six.
 
-Copyright is included below.
+This was done since there is only a need for a couple of functions and want to
+avoid including dependencies in the library.
+
+Its important to note that the only dependency as of writing is used for
+Python 2.6. While this can potentially change, the scope of the library
+is small enough that it is very likely that it will not.
+
+Also refer notes of original library author:
+
+    https://github.com/thieman/py-dag/pull/23#issuecomment-328617005
 """
 # Copyright (c) 2010-2017 Benjamin Peterson
 #
