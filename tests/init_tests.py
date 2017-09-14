@@ -19,7 +19,7 @@ def start_with_graph():
     dag = DAG()
     dag.from_dict({'a': ['b', 'c'],
                    'b': ['d'],
-                   'c': ['d'],
+                   'c': ['b'],
                    'd': []})
 
 
@@ -89,7 +89,7 @@ def test_downstream():
 
 @with_setup(start_with_graph)
 def test_all_downstreams():
-    assert sorted(dag.all_downstreams('a')) == ['b', 'c', 'd']
+    assert dag.all_downstreams('a') == ['c', 'b', 'd']
     assert dag.all_downstreams('b') == ['d']
     assert dag.all_downstreams('d') == []
 
@@ -109,9 +109,9 @@ def test_all_downstreams_pass_graph():
 @with_setup(start_with_graph)
 def test_predecessors():
     assert set(dag.predecessors('a')) == set([])
-    assert set(dag.predecessors('b')) == set(['a'])
+    assert set(dag.predecessors('b')) == set(['a', 'c'])
     assert set(dag.predecessors('c')) == set(['a'])
-    assert set(dag.predecessors('d')) == set(['b', 'c'])
+    assert set(dag.predecessors('d')) == set(['b'])
 
 
 @with_setup(start_with_graph)
